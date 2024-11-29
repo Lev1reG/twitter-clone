@@ -3,11 +3,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 import prisma from '@/libs/prismadb';
 
-const serverAuth = async (
-  req: Request,
-  res: Response
-) => {
-  const session = await getServerSession(req, res, authOptions)
+const serverAuth = async () => {
+  const session = await getServerSession(authOptions)
 
   if (!session?.user?.email) {
     throw new Error('Not signed in');
