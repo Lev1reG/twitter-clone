@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ userId: string }> },
 ) {
   try {
-    const { userId } = (await params).userId;
+    const userId = (await params).userId;
 
     if (!userId || typeof userId !== "string") {
       return new NextResponse("Invalid user ID", { status: 400 });
@@ -25,8 +25,6 @@ export async function GET(
         },
       },
     });
-
-    console.log("followersCount", followersCount);
 
     return NextResponse.json(
       { ...existingUser, followersCount },
