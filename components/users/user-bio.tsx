@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import useCurrentUser from "@/hooks/use-current-user";
 import useUser from "@/hooks/use-user";
 import { Button } from "@/components/button";
+import { useEditModal } from "@/hooks/use-edit-modal";
 
 interface UserBioProps {
   userId: string;
@@ -13,6 +14,8 @@ interface UserBioProps {
 export const UserBio = ({ userId }: UserBioProps) => {
   const { data: currentUser } = useCurrentUser();
   const { data: fetchedUser } = useUser(userId);
+
+  const editModal = useEditModal();
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
@@ -26,7 +29,7 @@ export const UserBio = ({ userId }: UserBioProps) => {
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {currentUser?.id === userId ? (
-          <Button secondary label="Edit Profile" onClick={() => { }} />
+          <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
           <Button onClick={() => { }} label="Follow" secondary />
         )}

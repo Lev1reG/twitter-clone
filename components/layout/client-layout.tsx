@@ -6,6 +6,7 @@ import { LoginModal } from "@/components/modals/login-modal";
 import { RegisterModal } from "@/components/modals/register-modal";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
+import { EditModal } from "../modals/edit-modal";
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ export const ClientLayout: React.FC<ClientLayoutProps> = ({children}) => {
     <>
       <SessionProvider>
         <Toaster />
+        <EditModal />
         <RegisterModal />
         <LoginModal />
         <div className="h-screen bg-black">
