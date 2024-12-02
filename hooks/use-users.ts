@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 import fetcher from "@/libs/fetcher";
 
-const useUsers = () => {
+export const useUsers = () => {
   const { 
     data, 
     error, 
@@ -17,5 +17,3 @@ const useUsers = () => {
     mutate
   }
 }
-
-export default useUsers;

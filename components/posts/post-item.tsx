@@ -1,4 +1,4 @@
-import useCurrentUser from "@/hooks/use-current-user";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { useLoginModal } from "@/hooks/use-login-modal";
 import { formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/navigation";

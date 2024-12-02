@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import useUser from "@/hooks/use-user";
+import { useUser } from "@/hooks/use-user";
 import { Avatar } from "@/components/avatar";
 
 interface UserHeroProps {

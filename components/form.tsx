@@ -1,8 +1,8 @@
 "use client";
 
-import useCurrentUser from "@/hooks/use-current-user";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { useLoginModal } from "@/hooks/use-login-modal";
-import usePosts from "@/hooks/use-posts";
+import { usePosts } from "@/hooks/use-posts";
 import { useRegisterModal } from "@/hooks/use-register-modal";
 import axios from "axios";
 import { useCallback, useState } from "react";

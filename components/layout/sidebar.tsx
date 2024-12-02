@@ -5,7 +5,7 @@ import { SidebarItem } from "@/components/layout/sidebar-item";
 import { BiLogOut } from "react-icons/bi";
 import { SidebarTweetButton } from "@/components/layout/sidebar-tweet-button";
 import { signOut, useSession } from "next-auth/react";
-import useCurrentUser from "@/hooks/use-current-user";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export const Sidebar = () => {
   const session = useSession();

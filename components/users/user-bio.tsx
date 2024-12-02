@@ -2,8 +2,8 @@ import { format } from "date-fns";
 import { BiCalendar } from "react-icons/bi";
 import { useMemo } from "react";
 
-import useCurrentUser from "@/hooks/use-current-user";
-import useUser from "@/hooks/use-user";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { useUser } from "@/hooks/use-user";
 import { Button } from "@/components/button";
 import { useEditModal } from "@/hooks/use-edit-modal";
 
@@ -31,7 +31,7 @@ export const UserBio = ({ userId }: UserBioProps) => {
         {currentUser?.id === userId ? (
           <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
-          <Button onClick={() => { }} label="Follow" secondary />
+          <Button onClick={() => {}} label="Follow" secondary />
         )}
       </div>
       <div className="mt-8 px-4">

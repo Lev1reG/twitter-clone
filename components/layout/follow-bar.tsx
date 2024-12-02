@@ -1,4 +1,4 @@
-import useUsers from "@/hooks/use-users";
+import { useUsers } from "@/hooks/use-users";
 import { Avatar } from "@/components/avatar";
 
 export const FollowBar = () => {

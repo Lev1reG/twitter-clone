@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { PostFeed } from "@/components/posts/post-feed";
 import { UserBio } from "@/components/users/user-bio";
 import { UserHero } from "@/components/users/user-hero";
-import useUser from "@/hooks/use-user";
+import { useUser } from "@/hooks/use-user";
 import { ClipLoader } from "react-spinners";
 
 const UserView = ({ params }: { params: { userId: string } }) => {

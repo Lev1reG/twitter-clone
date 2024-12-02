@@ -1,4 +1,4 @@
-import useUser from "@/hooks/use-user";
+import { useUser } from "@/hooks/use-user";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
