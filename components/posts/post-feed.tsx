@@ -2,7 +2,7 @@
 
 import { usePosts } from "@/hooks/use-posts";
 import { PostItem } from "@/components/posts/post-item";
-import { Post } from "@prisma/client";
+import { ExtendedPost } from "@/types";
 
 interface PostFeedProps {
   userId?: string;
@@ -13,7 +13,7 @@ export const PostFeed = ({ userId }: PostFeedProps) => {
 
   return (
     <>
-      {posts.map((post: Post) => (
+      {posts.map((post: ExtendedPost) => (
         <PostItem userId={userId} key={post.id} data={post} />
       ))}
     </>

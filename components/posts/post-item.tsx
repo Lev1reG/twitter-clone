@@ -6,24 +6,11 @@ import { useCallback, useMemo } from "react";
 import { Avatar } from "@/components/avatar";
 import { AiOutlineMessage, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useLike } from "@/hooks/use-like";
+import { ExtendedPost } from "@/types";
 
-interface User {
-  id: string;
-  name?: string;
-  username?: string;
-}
-
-interface Post {
-  id: string;
-  body: string;
-  createdAt: string | Date;
-  likedIds: string[];
-  user: User;
-  comments?: { id: string; body: string }[];
-}
 
 interface PostItemProps {
-  data: Post;
+  data: ExtendedPost;
   userId?: string;
 }
 
