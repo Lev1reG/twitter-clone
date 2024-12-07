@@ -27,6 +27,26 @@ export async function POST(req: Request) {
 
     updatedFollowingIds.push(userId);
 
+    try {
+      await client.notification.create({
+        data: {
+          body: "Someone followed you!",
+          userId,
+        },
+      });
+
+      await client.user.update({
+        where: {
+          id: userId,
+        },
+        data: {
+          hasNotification: true,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
     const updatedUser = await client.user.update({
       where: {
         id: currentUser.id,

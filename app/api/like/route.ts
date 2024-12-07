@@ -27,6 +27,34 @@ export async function POST(req: Request) {
 
     updatedLikedIds.push(currentUser.id);
 
+    try {
+      const post = await client.post.findUnique({
+        where: {
+          id: postId,
+        },
+      });
+
+      if (post?.userId) {
+        await client.notification.create({
+          data: {
+            body: "Someone liked your tweet!",
+            userId: post.userId,
+          },
+        });
+
+        await client.user.update({
+          where: {
+            id: post.userId,
+          },
+          data: {
+            hasNotification: true,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     const updatedPost = await client.post.update({
       where: {
         id: postId,

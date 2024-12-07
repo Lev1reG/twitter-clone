@@ -19,9 +19,10 @@ export const Sidebar = () => {
     },
     {
       label: "Notification",
-      href: "/notification",
+      href: "/notifications",
       icon: BsBellFill,
       auth: true,
+      alert: currentUser?.hasNotification,
     },
     {
       label: "Profile",
@@ -42,6 +43,7 @@ export const Sidebar = () => {
               label={item.label}
               icon={item.icon}
               auth={item?.auth}
+              alert={item?.alert} 
             />
           ))}
           {session.status === "authenticated" && (
