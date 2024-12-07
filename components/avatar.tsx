@@ -1,7 +1,7 @@
 import { useUser } from "@/hooks/use-user";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 
 interface AvatarProps {
   userId: string;
@@ -9,16 +9,12 @@ interface AvatarProps {
   hasBorder?: boolean;
 }
 
-export const Avatar = ({
-  userId,
-  isLarge,
-  hasBorder,
-}: AvatarProps) => {
+export const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
   const { data: fetchedUser } = useUser(userId);
   const router = useRouter();
 
   const onClick = useCallback(
-    (event: any) => {
+    (event: React.MouseEvent<HTMLImageElement>) => {
       event.stopPropagation();
 
       const url = `/users/${userId}`;

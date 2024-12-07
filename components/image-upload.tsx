@@ -25,13 +25,16 @@ export const ImageUpload = ({
   );
 
   const handleDrop = useCallback(
-    (files: any) => {
+    (files: File[]) => {
       const file = files[0];
       const reader = new FileReader();
 
-      reader.onload = (event: any) => {
-        setBase64(event.target.result);
-        handleChange(event.target.result);
+      reader.onload = (event: ProgressEvent<FileReader>) => {
+        if (event.target?.result) {
+          const base64Result = event.target.result as string;
+          setBase64(base64Result);
+          handleChange(base64Result);
+        }
       };
 
       reader.readAsDataURL(file);
@@ -57,22 +60,13 @@ export const ImageUpload = ({
       })}
     >
       <input {...getInputProps()} />
-      {
-        base64 ? (
-          <div className="flex items-center justify-center">
-            <Image
-              src={base64}
-              height={100}
-              width={100}
-              alt="Uploaded image"
-            />
-          </div>
-        ) : (
-          <p className="text-white">
-            {label}
-          </p>
-        )
-      }
+      {base64 ? (
+        <div className="flex items-center justify-center">
+          <Image src={base64} height={100} width={100} alt="Uploaded image" />
+        </div>
+      ) : (
+        <p className="text-white">{label}</p>
+      )}
     </div>
   );
 };

@@ -1,7 +1,18 @@
 import { CommentItem } from "@/components/posts/comment-item";
 
+interface CommentWithUser {
+  id: string;
+  body: string;
+  createdAt: Date | string;
+  user: {
+    id: string;
+    name?: string;
+    username?: string;
+  };
+}
+
 interface CommentFeedProps {
-  comments?: Record<string, any>[];
+  comments?: CommentWithUser[];
 }
 
 export const CommentFeed = ({ comments }: CommentFeedProps) => {

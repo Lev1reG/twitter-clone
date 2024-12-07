@@ -1,6 +1,7 @@
 import useSWR from "swr";
 
 import fetcher from "@/libs/fetcher";
+import { User } from "@prisma/client";
 
 export const useUsers = () => {
   const { 
@@ -8,7 +9,7 @@ export const useUsers = () => {
     error, 
     isLoading, 
     mutate 
-  } = useSWR("/api/users", fetcher);
+  } = useSWR<User[]>("/api/users", fetcher);
 
   return {
     data,

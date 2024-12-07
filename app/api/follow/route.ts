@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       throw new Error("Invalid ID");
     }
 
-    let updatedFollowingIds = [...(user.followingIds || [])];
+    const updatedFollowingIds = [...(user.followingIds || [])];
 
     updatedFollowingIds.push(userId);
 

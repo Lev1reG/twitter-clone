@@ -51,7 +51,7 @@ export const EditModal = () => {
       toast.success("Profile updated successfully.");
 
       editModal.onClose();
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);

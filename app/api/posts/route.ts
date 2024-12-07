@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     const { currentUser } = await serverAuth();
     const requestBody = await req.json();
-    const { name, username, bio, profileImage, coverImage, body } = requestBody;
+    const { body } = requestBody;
 
     const post = await client.post.create({
       data: {

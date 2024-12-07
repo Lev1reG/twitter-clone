@@ -2,6 +2,7 @@
 
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { useNotification } from "@/hooks/use-notification";
+import { Notification } from "@prisma/client";
 import { useEffect } from "react";
 import { BsTwitter } from "react-icons/bs";
 
@@ -23,7 +24,7 @@ export const NotificationsFeed = () => {
 
   return (
     <div className="flex flex-col">
-      {fetchedNotifications?.map((notification: Record<string, any>) => (
+      {fetchedNotifications?.map((notification: Notification) => (
         <div
           key={notification.id}
           className="flex flex-row items-center p-6 gap-4 border-b-[1px] border-neutral-800"

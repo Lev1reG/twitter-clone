@@ -3,15 +3,26 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { Avatar } from "@/components/avatar";
 
+interface CommentWithUser {
+  id: string;
+  body: string;
+  createdAt: Date | string;
+  user: {
+    id: string;
+    name?: string;
+    username?: string;
+  };
+}
+
 interface CommentItemProps {
-  data: Record<string, any>;
+  data: CommentWithUser;
 }
 
 export const CommentItem = ({ data }: CommentItemProps) => {
   const router = useRouter();
 
   const goToUser = useCallback(
-    (event: any) => {
+    (event: React.MouseEvent<HTMLParagraphElement>) => {
       event.stopPropagation();
 
       router.push(`/user/${data.user.id}`);

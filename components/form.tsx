@@ -43,7 +43,7 @@ export const Form = ({ placeholder, isComment, postId }: FormProps) => {
       setBody("");
       mutatePosts();
       mutatePost();
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);

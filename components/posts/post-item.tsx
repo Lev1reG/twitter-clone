@@ -7,8 +7,23 @@ import { Avatar } from "@/components/avatar";
 import { AiOutlineMessage, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useLike } from "@/hooks/use-like";
 
+interface User {
+  id: string;
+  name?: string;
+  username?: string;
+}
+
+interface Post {
+  id: string;
+  body: string;
+  createdAt: string | Date;
+  likedIds: string[];
+  user: User;
+  comments?: { id: string; body: string }[];
+}
+
 interface PostItemProps {
-  data: Record<string, any>;
+  data: Post;
   userId?: string;
 }
 
@@ -20,7 +35,7 @@ export const PostItem = ({ data, userId }: PostItemProps) => {
   const { hasLiked, toogleLike } = useLike({ postId: data.id, userId });
 
   const goToUser = useCallback(
-    (event: any) => {
+    (event: React.MouseEvent<HTMLParagraphElement>) => {
       event.stopPropagation();
 
       router.push(`/users/${data.user.id}`);
@@ -33,7 +48,7 @@ export const PostItem = ({ data, userId }: PostItemProps) => {
   }, [router, data.id]);
 
   const onLike = useCallback(
-    (event: any) => {
+    (event: React.MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
 
       if (!currentUser) {
